@@ -11,3 +11,5 @@
 Отчет по первому заданию: https://docs.google.com/document/d/1vnCwD-k6u54S8vJ12277NdXEi1_YuucWNcaaX4AE-_o/edit
 
 Презентация первого здания: https://docs.google.com/presentation/d/1uhhSvdAKlIbDeRTtNBqhMp70iOb_RWjqY6ZrUGs5FHE/edit?usp=sharing
+
+Отчет по второму заданию: https://docs.google.com/document/d/1hbxvOLAOJ82G5eNaadqFR04ZmYV9h0gJsH258nNp9Xg/edit
