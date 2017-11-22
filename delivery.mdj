@@ -51742,12 +51742,6 @@
 										{
 											"_type": "UMLActivationView",
 											"_id": "AAAAAAFf3puyQ4eiK1M=",
-											"_parent": {
-												"$ref": "AAAAAAFf3puyQ4eemYI="
-											},
-											"model": {
-												"$ref": "AAAAAAFf3puyQ4edQMU="
-											},
 											"visible": true,
 											"enabled": true,
 											"lineColor": "#000000",
@@ -53499,7 +53493,7 @@
 													"containerChangeable": false,
 													"containerExtending": false,
 													"left": 107,
-													"top": 165,
+													"top": 181,
 													"width": 121,
 													"height": 13,
 													"autoResize": false,
@@ -53525,7 +53519,7 @@
 													"containerChangeable": false,
 													"containerExtending": false,
 													"left": 77,
-													"top": 165,
+													"top": 181,
 													"width": 25,
 													"height": 13,
 													"autoResize": false,
@@ -53571,7 +53565,7 @@
 																	"containerChangeable": false,
 																	"containerExtending": false,
 																	"left": 92,
-																	"top": 198,
+																	"top": 214,
 																	"width": 109,
 																	"height": 13,
 																	"autoResize": false,
@@ -53592,7 +53586,7 @@
 															"containerChangeable": false,
 															"containerExtending": false,
 															"left": 72,
-															"top": 183,
+															"top": 199,
 															"width": 729,
 															"height": 43,
 															"autoResize": false,
@@ -53611,7 +53605,7 @@
 													"containerChangeable": false,
 													"containerExtending": false,
 													"left": 72,
-													"top": 183,
+													"top": 199,
 													"width": 729,
 													"height": 43,
 													"autoResize": false
@@ -53627,9 +53621,9 @@
 											"containerChangeable": false,
 											"containerExtending": false,
 											"left": 72,
-											"top": 160,
+											"top": 176,
 											"width": 729,
-											"height": 241,
+											"height": 225,
 											"autoResize": false,
 											"nameLabel": {
 												"$ref": "AAAAAAFf3p20QIflA94="
