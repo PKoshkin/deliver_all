@@ -49160,7 +49160,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "SelectRouteView",
+											"text": "AddRouteView",
 											"horizontalAlignment": 2,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -54467,7 +54467,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFfusK1IKrnA1c="
 					},
-					"name": "Collaboration1",
+					"name": "PlaceOrder",
 					"ownedElements": [
 						{
 							"_type": "UMLInteraction",
@@ -57020,7 +57020,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFfusK1IKrnA1c="
 					},
-					"name": "Collaboration2",
+					"name": "SelectRoute",
 					"ownedElements": [
 						{
 							"_type": "UMLInteraction",
@@ -59546,7 +59546,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFfusK1IKrnA1c="
 					},
-					"name": "Collaboration3",
+					"name": "CompleteLeg",
 					"ownedElements": [
 						{
 							"_type": "UMLInteraction",
@@ -63445,7 +63445,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFfusK1IKrnA1c="
 					},
-					"name": "Collaboration4",
+					"name": "ShowOrders",
 					"ownedElements": [
 						{
 							"_type": "UMLInteraction",
@@ -66455,7 +66455,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFfusK1IKrnA1c="
 					},
-					"name": "Collaboration5",
+					"name": "AddRoute",
 					"ownedElements": [
 						{
 							"_type": "UMLInteraction",
@@ -66500,7 +66500,7 @@
 													"showShadow": true,
 													"containerChangeable": false,
 													"containerExtending": false,
-													"left": 71,
+													"left": 79,
 													"top": 5,
 													"width": 58,
 													"height": 13,
@@ -66526,7 +66526,7 @@
 													"showShadow": true,
 													"containerChangeable": false,
 													"containerExtending": false,
-													"left": 5,
+													"left": 13,
 													"top": 5,
 													"width": 61,
 													"height": 13,
@@ -66547,7 +66547,7 @@
 											"showShadow": true,
 											"containerChangeable": false,
 											"containerExtending": false,
-											"left": 0,
+											"left": 8,
 											"top": 0,
 											"width": 1369,
 											"height": 849,
@@ -67029,7 +67029,7 @@
 															"height": 13,
 															"autoResize": false,
 															"underline": false,
-															"text": "selectRouteView: SelectRouteView",
+															"text": "addRouteView: AddRouteView",
 															"horizontalAlignment": 2,
 															"verticalAlignment": 5,
 															"wordWrap": false
@@ -67491,7 +67491,7 @@
 													},
 													"edgePosition": 1,
 													"underline": false,
-													"text": "1 : toSelectRoute(order)",
+													"text": "1 : toAddRoute(order)",
 													"horizontalAlignment": 2,
 													"verticalAlignment": 5,
 													"wordWrap": false
@@ -71349,7 +71349,7 @@
 									"_parent": {
 										"$ref": "AAAAAAFf/hYYwW7l0D4="
 									},
-									"name": "toSelectRoute",
+									"name": "toAddRoute",
 									"source": {
 										"$ref": "AAAAAAFf/hjcPm9VGio="
 									},
@@ -71686,7 +71686,7 @@
 									"_parent": {
 										"$ref": "AAAAAAFf/hYYwW7l0D4="
 									},
-									"name": "selectRouteView",
+									"name": "addRouteView",
 									"visibility": "public",
 									"represent": {
 										"$ref": "AAAAAAFf/hmyKW+VGiI="
@@ -71826,7 +71826,9 @@
 							"visibility": "public",
 							"isStatic": false,
 							"isLeaf": false,
-							"type": "SelectRouteView",
+							"type": {
+								"$ref": "AAAAAAFf/m40+HZdmrU="
+							},
 							"isReadOnly": false,
 							"isOrdered": false,
 							"isUnique": false,
@@ -72104,7 +72106,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFfusK1IKrnA1c="
 					},
-					"name": "SelectRouteView",
+					"name": "AddRouteView",
 					"ownedElements": [
 						{
 							"_type": "UMLGeneralization",
@@ -72330,7 +72332,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFfusK1IKrnA1c="
 					},
-					"name": "Collaboration6",
+					"name": "CancelOrder",
 					"ownedElements": [
 						{
 							"_type": "UMLInteraction",
@@ -73922,7 +73924,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFfusK1IKrnA1c="
 					},
-					"name": "Collaboration7",
+					"name": "ShowLocation",
 					"ownedElements": [
 						{
 							"_type": "UMLInteraction",
