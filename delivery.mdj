@@ -61915,7 +61915,7 @@
 															"height": 13,
 															"autoResize": false,
 															"underline": false,
-															"text": "operator: Operator",
+															"text": "client: Client",
 															"horizontalAlignment": 2,
 															"verticalAlignment": 5,
 															"wordWrap": false
@@ -65371,7 +65371,7 @@
 									"_parent": {
 										"$ref": "AAAAAAFf/em2rWvKmrQ="
 									},
-									"name": "operator",
+									"name": "client",
 									"visibility": "public",
 									"represent": {
 										"$ref": "AAAAAAFf/epGaGw5Sp4="
@@ -65508,9 +65508,7 @@
 							"visibility": "public",
 							"isStatic": false,
 							"isLeaf": false,
-							"type": {
-								"$ref": "AAAAAAFfRIE1Lo7vcLQ="
-							},
+							"type": "Client",
 							"isReadOnly": false,
 							"isOrdered": false,
 							"isUnique": false,
@@ -65813,7 +65811,7 @@
 															"height": 13,
 															"autoResize": false,
 															"underline": false,
-															"text": "operator: Operator",
+															"text": "client: Client",
 															"horizontalAlignment": 2,
 															"verticalAlignment": 5,
 															"wordWrap": false
@@ -68811,7 +68809,7 @@
 									"_parent": {
 										"$ref": "AAAAAAFf/e5BWmytovU="
 									},
-									"name": "operator",
+									"name": "client",
 									"visibility": "public",
 									"represent": {
 										"$ref": "AAAAAAFf/3v3X/DAAKo="
@@ -68982,9 +68980,7 @@
 							"visibility": "public",
 							"isStatic": false,
 							"isLeaf": false,
-							"type": {
-								"$ref": "AAAAAAFfRIE1Lo7vcLQ="
-							},
+							"type": "Client",
 							"isReadOnly": false,
 							"isOrdered": false,
 							"isUnique": false,
@@ -75667,7 +75663,7 @@
 															"height": 13,
 															"autoResize": false,
 															"underline": false,
-															"text": "operator: Operator",
+															"text": "client: Client",
 															"horizontalAlignment": 2,
 															"verticalAlignment": 5,
 															"wordWrap": false
@@ -78071,7 +78067,7 @@
 									"_parent": {
 										"$ref": "AAAAAAFf/46u8/Udsfk="
 									},
-									"name": "operator",
+									"name": "client",
 									"visibility": "public",
 									"represent": {
 										"$ref": "AAAAAAFf/49ROvWLisM="
@@ -78169,9 +78165,7 @@
 							"visibility": "public",
 							"isStatic": false,
 							"isLeaf": false,
-							"type": {
-								"$ref": "AAAAAAFfRIE1Lo7vcLQ="
-							},
+							"type": "Client",
 							"isReadOnly": false,
 							"isOrdered": false,
 							"isUnique": false,
@@ -79516,7 +79510,7 @@
 															"height": 13,
 															"autoResize": false,
 															"underline": false,
-															"text": "operator: Operator",
+															"text": "client: Client",
 															"horizontalAlignment": 2,
 															"verticalAlignment": 5,
 															"wordWrap": false
@@ -80142,7 +80136,7 @@
 									"_parent": {
 										"$ref": "AAAAAAFf/5TZFv00GLA="
 									},
-									"name": "operator",
+									"name": "client",
 									"visibility": "public",
 									"represent": {
 										"$ref": "AAAAAAFgMWOmaHZ9VJc="
@@ -80224,9 +80218,7 @@
 							"visibility": "public",
 							"isStatic": false,
 							"isLeaf": false,
-							"type": {
-								"$ref": "AAAAAAFfRIE1Lo7vcLQ="
-							},
+							"type": "Client",
 							"isReadOnly": false,
 							"isOrdered": false,
 							"isUnique": false,
