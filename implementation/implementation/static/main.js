@@ -9,23 +9,34 @@ function switchView(newView) {
 class View {
     constructor() {
         this.template = "";
+        this.context = {};
     }
 
-    render(context) {
-        document.getElementById("container").innerHTML = Mustache.render(this.template, context);
+    render() {
+        document.getElementById("container").innerHTML = Mustache.render(this.template, this.context);
     }
 
-    request(endpoint, method, context, callback) {
+    request(endpoint, method, context, key) {
         context["method"] = method;
         var xhttp = new XMLHttpRequest();
+        var that = this;
         xhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
-                callback(JSON.parse(this.responseText));
+                that.context[key] = JSON.parse(this.responseText);
+                that.render();
             }
         };
         xhttp.open("POST", "/api/"+endpoint+"/", true);
         xhttp.setRequestHeader("Content-type", "application/json");
-        xhttp.send(JSON.dump(context));
+        xhttp.send(JSON.stringify(context));
+    }
+
+    validate() {
+        return true;
+    }
+
+    submit() {
+        return;
     }
 }
 
@@ -47,7 +58,13 @@ class MainView extends View {
 class OrderListView extends View {
     constructor() {
         super()
-        this.template = "test";
+        this.template = "<button onclick='init()'>Назад</button><ol>{{#orders}}"+
+        "<li>{{from}} -> {{to}} ({{num}} товаров)"+
+        "{{#route}}{{#element}}{{#vertex}}{{name}}{{/vertex}}"+
+        "{{^vertex}} --{{name}}-> {{/vertex}}{{/element}}{{/route}}"+
+        "{{^route}}<button onclick='view.chooseRoute({{id}})'>Выбрать маршрут</button>{{/route}}</li>"+
+        "{{/orders}}</ol>{{^orders}}Загрузка{{/orders}}"
+        this.request("order_list", "get_orders", {}, "orders")
     }
 }
 
