@@ -6,7 +6,7 @@ import json
 
 class APIEndpoint(View):
     def post(self, request):
-        data = json.loads(request.body)
+        data = json.loads(request.body.decode("utf-8"))
         method = data["method"]
         del data["method"]
         result = getattr(self, method)(**data)
@@ -26,7 +26,9 @@ class OrderListEndpoint(APIEndpoint):
         json = []
         for order in orders:
             json.append({"id": order.id, "from": order.deliver_from.adress,
-                         "to": order.deliver_to.adress, "num": order.product_set.count()})
+                         "to": order.deliver_to.adress, "num": order.product_set.count(),
+                         "weight": sum([el.weight for el in order.product_set.all()]),
+                         "can_edit": True})
             if order.follows:
                 route = []
                 for i, leg in enumerate(order.follows.get_legs()):
@@ -35,6 +37,7 @@ class OrderListEndpoint(APIEndpoint):
                     route.append(serialize_connection(leg))
                     route.append(serialize_connection(leg.to_vertex))
                 json[-1]["route"] = route
+                json[-1]["can_edit"] = order.follows.location == 0
         return json
 
     def get_routes(self, order):
@@ -42,16 +45,13 @@ class OrderListEndpoint(APIEndpoint):
         for i, route in enumerate(Order.objects.get(id=order).route_set.all()):
             cost = 0
             length = 0
-            route_type = None
+            leg_types = set()
             for leg in route.get_legs():
                 cost += leg.cost
                 length += leg.time
-                if route_type is None:
-                    route_type = leg.leg_type
-                elif route_type != leg.leg_type:
-                    route_type = False
+                leg_types.add(leg.leg_type)
             routes.append({"index": i, "cost": cost,
-                           "length": length, "type": route_type})
+                           "length": length, "type": ", ".join(leg_types)})
         return {"order": order, "routes": routes}
 
     def select_route(self, order, index):
@@ -68,7 +68,7 @@ class PlaceOrderEndpoint(APIEndpoint):
                                   in (from_adress, to_adress)]
         order = Order(deliver_from=from_vertex, deliver_to=to_vertex)
         order.save()
-        for weight in products:
-            Product(cost=0, weight=int(weight), order=order).save()
+        for weight, cost in products:
+            Product(weight=int(weight), cost=int(cost), order=order).save()
         Navigator.build_routes(order)
         return {}

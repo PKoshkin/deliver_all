@@ -67,10 +67,10 @@ class OrderListView extends View {
     constructor() {
         super()
         this.template = "<button onclick='init()'>Назад</button><ol>{{#orders}}"+
-        "<li>{{from}} -> {{to}} ({{num}} товаров)  <b>Маршрут: </b>"+
+        "<li>{{from}} -> {{to}} ({{num}} товаров, {{weight}} кг)  <b>Маршрут: </b>"+
         "{{#route}}{{#vertex}}{{name}}{{/vertex}}"+
         "{{^vertex}} =={{name}}=> {{/vertex}}{{/route}}"+
-        "{{^route}}<span id='{{id}}'>"+button+"</span>{{/route}}</li>"+
+        "{{#can_edit}}<span id='{{id}}'>"+button+"</span>{{/can_edit}}</li>"+
         "{{/orders}}</ol>{{^orders}}Загрузка{{/orders}}"
         this.load()
     }
@@ -104,7 +104,7 @@ class OrderListView extends View {
     }
 }
 
-const product = "<input name=prod{{index}}>кг.<br/>";
+const product = "<input name=prod{{index}}>кг.  <input name=cost{{index}}>руб.<br/>";
 
 class PlaceOrderView extends View {
     constructor() {
@@ -119,7 +119,9 @@ class PlaceOrderView extends View {
     }
 
     addProduct() {
-        document.getElementById("products").innerHTML += Mustache.render(product, {"index": this.product_num});
+	var cont = document.createElement("div")
+        document.getElementById("products").appendChild(cont)
+	cont.innerHTML = Mustache.render(product, {"index": this.product_num});
         this.product_num += 1;
     }
 
@@ -127,7 +129,7 @@ class PlaceOrderView extends View {
         var form = document.forms["main"];
         var products = [];
         for (var i = 0; i < this.product_num; ++i) {
-            products[i] = form["prod"+i].value;
+            products[i] = [form["prod"+i].value, form["cost"+i].value];
         }
         var data = {
             "from_adress": form["from"].value,
