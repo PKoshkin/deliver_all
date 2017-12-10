@@ -81,7 +81,7 @@ class OrderListView extends View {
 
     chooseRoute(order) {
         var that = this;
-        this.request("order_list", "get_routes", {"order": order}, function() { PlaceOrderEndpoint
+        this.request("order_list", "get_routes", {"order": order}, function() {
             var context = JSON.parse(this.responseText);
             document.getElementById(order).innerHTML = Mustache.render("<select onchange='view.onselect({{order}}, this)'>"+
                 "<option value='none'>----</option>"+
