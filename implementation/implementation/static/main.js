@@ -21,9 +21,11 @@ class View {
         var xhttp = new XMLHttpRequest();
         var that = this;
         if (typeof callback === "string") {
+            console.log("ok")
+            var key = callback;
             callback = function() {
                 if (this.readyState == 4 && this.status == 200) {
-                    that.context[callback] = JSON.parse(this.responseText);
+                    that.context[key] = JSON.parse(this.responseText);
                     that.render();
                 }
             };
@@ -31,6 +33,7 @@ class View {
         xhttp.onreadystatechange = callback;
         xhttp.open("POST", "/api/"+endpoint+"/", true);
         xhttp.setRequestHeader("Content-type", "application/json");
+        console.log(context);
         xhttp.send(JSON.stringify(context));
     }
 
@@ -64,10 +67,10 @@ class OrderListView extends View {
     constructor() {
         super()
         this.template = "<button onclick='init()'>Назад</button><ol>{{#orders}}"+
-        "<li>{{from}} -> {{to}} ({{num}} товаров)"+
-        "{{#route}}{{#element}}{{#vertex}}{{name}}{{/vertex}}"+
-        "{{^vertex}} --{{name}}-> {{/vertex}}{{/element}}{{/route}}"+
-        "{{^route}}<div id='{{id}}'>"+button+"</div>{{/route}}</li>"+
+        "<li>{{from}} -> {{to}} ({{num}} товаров)  <b>Маршрут: </b>"+
+        "{{#route}}{{#vertex}}{{name}}{{/vertex}}"+
+        "{{^vertex}} =={{name}}=> {{/vertex}}{{/route}}"+
+        "{{^route}}<span id='{{id}}'>"+button+"</span>{{/route}}</li>"+
         "{{/orders}}</ol>{{^orders}}Загрузка{{/orders}}"
         this.load()
     }
@@ -80,28 +83,33 @@ class OrderListView extends View {
         var that = this;
         this.request("order_list", "get_routes", {"order": order}, function() {
             var context = JSON.parse(this.responseText);
-            document.getElementById(order).innerHTML = Mustache.render("<select onchange='view.onselect({{order}}, this)'>{{#routes}}<option value={{index}}>{{length}} дн. {{cost}} руб. {{type}}{{/routes}}", context)
+            document.getElementById(order).innerHTML = Mustache.render("<select onchange='view.onselect({{order}}, this)'>"+
+                "<option value='none'>----</option>"+
+                "{{#routes}}<option value={{index}}>{{length}} дн. {{cost}} руб. {{type}}{{/routes}}", context)
         });
     }
 
     onselect(order, elem) {
-        this.selectRoute(order, this.val);
+        if (elem.value != "none") {
+            this.selectRoute(order, elem.value);
+        }
     }
 
     selectRoute(order, index) {
         var that = this;
+        console.log(index);
         this.request("order_list", "select_route", {"order": order, "index": index}, function () {
             that.load();
         });
     }
 }
 
-const product = "<input name={{index}}>кг.<br/>";
+const product = "<input name=prod{{index}}>кг.<br/>";
 
 class PlaceOrderView extends View {
     constructor() {
         super()
-        this.template = "Введите параметры заказа:<br/><form name='main'>"+
+        this.template = "<button onclick='init()'>Назад</button><br/>Введите параметры заказа:<br/><form name='main'>"+
             "Откуда: <input name='from'><br/>"+
             "Куда: <input name='to'><br/>"+
             "Товары: <button onclick='view.addProduct(); return false;'>+</button><br/>"+
@@ -119,11 +127,11 @@ class PlaceOrderView extends View {
         var form = document.forms["main"];
         var products = [];
         for (var i = 0; i < this.product_num; ++i) {
-            products[i] = form[i.toString()].value;
+            products[i] = form["prod"+i].value;
         }
         var data = {
-            "from": form["from"].value,
-            "to": form["to"].value,
+            "from_adress": form["from"].value,
+            "to_adress": form["to"].value,
             "products": products,
         }
         this.request("order_list", "place_order", data, init);
