@@ -74,14 +74,14 @@ class OrderListView extends View {
         "{{/orders}}</ol>{{^orders}}Загрузка{{/orders}}"
         this.load()
     }
-    
+
     load() {
         this.request("order_list", "get_orders", {}, "orders")
     }
 
     chooseRoute(order) {
         var that = this;
-        this.request("order_list", "get_routes", {"order": order}, function() {
+        this.request("order_list", "get_routes", {"order": order}, function() { PlaceOrderEndpoint
             var context = JSON.parse(this.responseText);
             document.getElementById(order).innerHTML = Mustache.render("<select onchange='view.onselect({{order}}, this)'>"+
                 "<option value='none'>----</option>"+
@@ -134,7 +134,7 @@ class PlaceOrderView extends View {
             "to_adress": form["to"].value,
             "products": products,
         }
-        this.request("order_list", "place_order", data, init);
+        this.request("place_order", "place_order", data, init);
         return false;
     }
 }

@@ -61,6 +61,8 @@ class OrderListEndpoint(APIEndpoint):
         order.save()
         return {}
 
+
+class PlaceOrderEndpoint(APIEndpoint):
     def place_order(self, from_adress, to_adress, products):
         from_vertex, to_vertex = [Navigator.get_vertex(el) for el
                                   in (from_adress, to_adress)]
