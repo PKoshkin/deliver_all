@@ -15,9 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from .views import OrderListEndpoint
+from .views import OrderListEndpoint, PlaceOrderEndpoint
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/order_list/', OrderListEndpoint.as_view()),
+    path('api/place_order/', PlaceOrderEndpoint.as_view())
 ]
