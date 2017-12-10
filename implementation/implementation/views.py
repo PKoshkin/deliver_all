@@ -22,7 +22,7 @@ def serialize_connection(conn):
 
 class OrderListEndpoint(APIEndpoint):
     def get_orders(self):
-        orders = History.get_orders(0)
+        orders = Order.objects.filter(recipient=0)
         json = []
         for order in orders:
             json.append({"id": order.id, "from": order.deliver_from.adress,
@@ -36,7 +36,6 @@ class OrderListEndpoint(APIEndpoint):
                     route.append(serialize_connection(leg.to_vertex))
                 json[-1]["route"] = route
         return json
-
 
     def get_routes(self, order):
         routes = []

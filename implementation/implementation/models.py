@@ -62,12 +62,6 @@ class Order(DomainObject):
                                 on_delete=models.CASCADE, related_name="+")
 
 
-class History:
-    @staticmethod
-    def get_orders(user):
-        return Order.objects.filter(recipient=user)
-
-
 class Navigator:
     @staticmethod
     def get_vertex(adress):
