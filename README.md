@@ -16,6 +16,8 @@
 
 Отчет по второму заданию: https://docs.google.com/document/d/1hbxvOLAOJ82G5eNaadqFR04ZmYV9h0gJsH258nNp9Xg/edit
 
+Презентация второго здания: https://docs.google.com/presentation/d/1DLJr694ruGsE2hh4_ewuVwfQgbjWZc8hkCYa1oETvnk
+
 Развернутое приложение доступно по адресу: http://ec2-35-164-159-128.us-west-2.compute.amazonaws.com:8000/static/index.html
 
 ## Инструкция по локальному развертыванию
